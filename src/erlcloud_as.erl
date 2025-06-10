@@ -16,6 +16,8 @@
          describe_instances/4,
          terminate_instance/1, terminate_instance/2, terminate_instance/3,
 
+         set_as_host/1,
+
          create_launch_config/2,
          create_auto_scaling_group/2,
          update_auto_scaling_group/2,
@@ -81,6 +83,14 @@
 
 -define(RECORD_LIFECYCLE_ACTION_HEARTBEAT_ACTIVITY, 
         "/RecordLifecycleActionHeartbeatResponse/ResponseMetadata/RequestId").
+
+%% --------------------------------------------------------------------
+%% @doc Sets as hosts in #aws_config{}
+%% @end
+%% --------------------------------------------------------------------
+set_as_host(Host) ->
+    Config = erlcloud_aws:default_config(),
+    put(aws_config, Config#aws_config{as_host = Host}).
 
 
 %% --------------------------------------------------------------------
